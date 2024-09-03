@@ -17,6 +17,8 @@ const assemblySelector = (store) => ({
 function guessType(value) {
     if (value == null) {
         return DataTypes.NULL;
+    } else if (value === true || value === false) {
+        return DataTypes.BOOLEAN
     }
     else if (!isNaN(value) && !isNaN(parseFloat(value))) {
         return DataTypes.NUMBER;
@@ -182,6 +184,8 @@ function saveAssembly(assembly) {
             }
             else if (type === DataTypes.NUMBER || type === DataTypes.DIR) {
                 inputs.push([details.inputs[key].index + 1, null, Number(component.data[key])]);
+            } else if (type === DataTypes.BOOLEAN) {
+                inputs.push([details.inputs[key].index + 1, null, component.data[key] === true]);
             } else if (type !== DataTypes.PULSE && type !== DataTypes.REF && type !== DataTypes.NULL) {
                 inputs.push([details.inputs[key].index + 1, null, component.data[key]]);
             }

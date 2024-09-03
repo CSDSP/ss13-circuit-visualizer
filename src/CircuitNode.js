@@ -18,7 +18,7 @@ const fixedSelector = (id) => (store) => ({
 })
 
 const allDataTypeOptions = []
-const allowedConstantChipTypes = [DataTypes.STRING, DataTypes.NUMBER, DataTypes.DIR, DataTypes.BOOLEAN, DataTypes.COLOR, DataTypes.NULL]
+const allowedConstantChipTypes = [DataTypes.STRING, DataTypes.NUMBER, DataTypes.DIR, DataTypes.COLOR, DataTypes.NULL]
 const constantChipTypeOptions = []
 for (let type in DataTypes) {
     if (DataTypes[type] !== DataTypes.ANY && DataTypes[type] !== DataTypes.PULSE) {
@@ -40,6 +40,7 @@ function InputWrapper({value, type, setValue, containedAnyType, setContainedAnyT
     }
     const setDataTypeEvent = useCallback((e) => setContainedAnyType(e.target.value), [setContainedAnyType]);
     const setDataEvent = useCallback((e) => setValue(e.target.value), [setValue]);
+    const setDataCheckedEvent = useCallback((e) => setValue(e.target.checked), [setValue]);
 
     switch (type) {
         case DataTypes.ANY:
@@ -67,7 +68,7 @@ function InputWrapper({value, type, setValue, containedAnyType, setContainedAnyT
                 <option value="10">southwest (10)</option>
             </select>
         case DataTypes.BOOLEAN:
-            return <input className="nodrag" type="checkbox" value={valueView} onChange={setDataEvent} />
+            return <input className="nodrag" type="checkbox" checked={valueView} onChange={setDataCheckedEvent} />
         case DataTypes.REF:
             return <p>(REF)</p>
         case DataTypes.LIST:
