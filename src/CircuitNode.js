@@ -256,7 +256,7 @@ export function CircuitNode({id, data, type}) {
                         <p className="handle-name">{key}</p>
                         <InputWrapper value={data[key]} type={DataTypes.ANY} setValue={inputFunctions[key][0]}
                                       containedAnyType={data[`${key}-type`]} setContainedAnyType={inputFunctions[key][1]}
-                                      allowedAnyTypes={allDataTypeOptions}/>
+                                      allowedAnyTypes={constantChipTypeOptions}/>
                     </label>
                     : <div className="handle-name">{key}</div>}
                 <Handle type={"source"} position={Position.Right} id={key} className={`handle-type-${outputs[key].dataType}`}/>
