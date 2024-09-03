@@ -2,6 +2,7 @@
   "name": "ss13-circuit-visualizer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://csdsp.github.io/ss13-circuit-visualizer/",
   "dependencies": {
     "@hello-pangea/dnd": "^16.6.0",
     "@testing-library/jest-dom": "^5.17.0",
