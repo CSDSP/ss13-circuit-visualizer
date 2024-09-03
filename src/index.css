@@ -11,3 +11,270 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.circuit-node {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 5px solid black;
+}
+
+.handles-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.handle-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.handle-name {
+  margin-right: 5px;
+}
+
+.handle-group * {
+  display: inline;
+}
+
+.handle-group-right {
+  justify-content: flex-end;
+}
+
+.react-flow__node {
+  background-color: #cccccc80;
+}
+
+.react-flow__node.selected {
+  background-color: #99999960;
+}
+
+.react-flow__handle {
+  position: relative !important;
+  width: 20px !important;
+  height: 20px !important;
+  transform: none !important;
+}
+
+.react-flow__handle-left {
+  left: -30px !important;
+}
+
+.react-flow__handle-right {
+  right: -30px !important;
+}
+
+input {
+  width: 8em;
+}
+
+input[type=checkbox] {
+  width: 1em;
+}
+
+select {
+  width: 8em;
+}
+
+input[type=string][maxlength="1"] {
+  width: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.node-name {
+  font-weight: bold;
+  margin: 0.1em;
+}
+
+.node-center {
+  margin: 0 10px;
+  align-self: stretch;
+}
+
+.node-action-buttons {
+  text-align: center;
+}
+
+.node-action-button {
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.3em;
+  text-align: center;
+  border-radius: 100%;
+}
+
+.create-list-button {
+  border-radius: 10px;
+}
+
+.hoverable-button:hover {
+  background-color: #cccccc80;
+}
+
+.hoverable-button:active {
+  background-color: #ccccccf0;
+}
+
+.panel-categories {
+  display: inline-block;
+}
+
+.react-flow__panel > button {
+  display: inline-block;
+}
+
+.popup-content:has(> .load-modal) {
+  height: 70%;
+}
+
+.load-modal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.load-modal > * {
+  width: 100%;
+}
+
+.load-modal > h3 {
+  text-align: center;
+}
+
+.load-modal > textarea {
+  flex-grow: 1;
+}
+
+.export-assembly > h3 {
+  text-align: center;
+}
+
+.export-left p {
+  display: inline;
+}
+
+.export-left {
+  margin-bottom: 10px;
+  padding-bottom: 2px;
+  display: block;
+  border-bottom: black 5px solid;
+}
+
+.export-right {
+  word-break: break-all;
+  width: 70%;
+}
+
+.popup-content {
+  overflow-y: auto;
+  max-height: 90%;
+}
+
+.popup-content:has(> .list-editor) {
+  padding: 0 !important;
+  overflow-y: unset;
+  border: 0;
+}
+
+.list-editor {
+  max-height: 90vh;
+  padding: 0;
+  margin: 0;
+}
+
+.list-editor-items {
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.list-editor-add {
+  border-top: black 5px solid;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+}
+
+.list-editor-row {
+  padding: 0 5px;
+}
+
+.list-editor-add > span {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.component-selector-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 8em);
+  border-bottom: 5px solid black;
+}
+
+.component-selector-tab {
+  background-color: #cccccc80;
+  margin: 5px;
+  border: 1px solid #cccccca0;
+}
+
+.component-selector-tab:hover {
+  background-color: #cccccca0;
+}
+
+.component-selector-tab.selected {
+  background-color: #aaaaaac0;
+}
+
+.component-selector-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.component-selector-item {
+  margin: 5px;
+  background-color: #bd9a7a80;
+  border: 1px solid #cccccca0;
+}
+
+.component-selector-item:hover {
+  background-color: #bd9a7aa0;
+}
+
+.component-selector-item:active {
+  background-color: #bd9a7ac0;
+}
+
+.material-symbols-outlined {
+ font-variation-settings:
+         'FILL' 0,
+         'wght' 400,
+         'GRAD' 0,
+         'opsz' 24
+}

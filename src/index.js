@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import '@xyflow/react/dist/style.css';
+import 'reactjs-popup/dist/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ReactFlowProvider } from '@xyflow/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <div style={{width: '100vw', height: '100vh'}}>
+        <ReactFlowProvider>
+            <App/>
+        </ReactFlowProvider>
+    </div>
 );
 
 // If you want to start measuring performance in your app, pass a function
