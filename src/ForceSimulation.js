@@ -21,13 +21,14 @@ const simulation = forceSimulation()
 const selector = (store) => ({
     updateFromSimulation: store.updateFromSimulation,
     fixedNodes: store.fixedNodes,
-    simulationRunning: store.simulationRunning
+    simulationRunning: store.simulationRunning,
+    edges: store.edges
 })
 
 export const useSimulation = () => {
-    const { getNodes, setNodes, getEdges } = useReactFlow();
+    const { getNodes, setNodes} = useReactFlow();
     const initialized = useNodesInitialized();
-    const { updateFromSimulation, fixedNodes, simulationRunning } = useStore(selector)
+    const { updateFromSimulation, fixedNodes, simulationRunning, edges } = useStore(selector)
     const shouldRun = simulationRunning && initialized && getNodes().length !== 0
     
     const nodes= useMemo(() => {
@@ -48,13 +49,13 @@ export const useSimulation = () => {
         });
         simulation.nodes(nodes).force(
             'link',
-            forceLink(getEdges())
+            forceLink(edges.map(edge => ({source: edge.source, target: edge.target})))
                 .id((node) => node.id)
                 .strength(0.2)
                 .distance(100),
         ).alphaTarget(0.05);
         return nodes
-    }, [getEdges, getNodes, shouldRun, fixedNodes])
+    }, [edges, getNodes, shouldRun, fixedNodes])
     // force updates on data changes (
     useEffect(() => {
         if (!shouldRun) return

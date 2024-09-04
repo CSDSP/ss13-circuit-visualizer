@@ -105,6 +105,7 @@ export default function App() {
                                 <h3>Load Program?</h3>
                                 <textarea value={textareaValue} onChange={setTextareaValueEvent} />
                                 <button onClick={() => {
+                                    store.setSimulationRunning(false)
                                     loadProgram();
                                     close();
                                 }}>Confirm</button>
