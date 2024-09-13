@@ -167,6 +167,9 @@ function saveAssembly(assembly) {
         const details = NodeDetails[component.type];
         const inputs = []
         for (let key in details.inputs) {
+            if (component.data[key] == null) {
+                continue;
+            }
             let type = details.inputs[key].dataType
             if (type === DataTypes.ANY) {
                 type = component.data[`${key}-type`]
