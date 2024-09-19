@@ -152,7 +152,7 @@ function NodeListEditor({value, setValue}) {
                                     {(provided, snapshot) => (
                                         <div className="list-editor-row" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                             <label>
-                                                {i}:
+                                                {i + 1}:
                                                 <InputWrapper value={containedValues[i]} type={DataTypes.ANY} setValue={setFunctions[i][0]}
                                                               containedAnyType={containedTypes[i]} setContainedAnyType={setFunctions[i][1]}
                                                               allowedAnyTypes={constantChipTypeOptions}/>
