@@ -46,7 +46,7 @@ export const useStore = create((set, get) => ({
         // This could fail when a node is added or remove, but the simulation should restart at that point anyway
         set({nodes: get().nodes.map((node, i) =>
             node.id === simulationNodes[i].id && !node.data.isFixed
-                ? {...node, position: {x: simulationNodes[i].x - node.measured.width / 2, y: simulationNodes[i].y - node.measured.height / 2}}
+                ? {...node, position: {x: simulationNodes[i].x, y: simulationNodes[i].y}}
                 : node
         )})
     },
@@ -59,7 +59,7 @@ export const useStore = create((set, get) => ({
             x: (window.innerWidth/2-getResult.viewport.x)/zoom,
             y: (window.innerHeight/2-getResult.viewport.y)/zoom}
         set({nodes: [...getResult.nodes, {
-            id, type, data, position
+            id, type, data, position, origin: [0.5, 0.5]
         }]})
     },
     updateAssembly(info) {

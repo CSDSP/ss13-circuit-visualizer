@@ -35,8 +35,8 @@ export const useSimulation = () => {
         if (!shouldRun) return
         const nodes = getNodes().map((node) => {
             const result = {
-                x: node.position.x + node.measured.width / 2,
-                y: node.position.y + node.measured.height / 2,
+                x: node.position.x,
+                y: node.position.y,
                 id: node.id,
                 bbox: [
                     [-node.measured.width / 1.9 - 25, -node.measured.height / 1.9],
