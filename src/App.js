@@ -12,6 +12,7 @@ import Popup from "reactjs-popup";
 import {ExportAssembly, loadAssembly} from "./Assembly";
 import {useSimulation} from "./ForceSimulation";
 import {ComponentSelector} from "./ComponentSelector";
+import {SelectionCopier} from "./SelectionCopier";
 
 const appSelector = (store) => ({
     nodes: store.nodes,
@@ -124,6 +125,7 @@ export default function App() {
                 </Panel>
                 <Controls />
                 <MiniMap />
+                <SelectionCopier />
                 <Background variant="dots" gap={12} size={1} />
             </ReactFlow>
         </div>
