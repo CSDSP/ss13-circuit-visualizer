@@ -20,7 +20,7 @@ function guessType(value) {
     } else if (value === true || value === false) {
         return DataTypes.BOOLEAN
     }
-    else if (!isNaN(value) && !isNaN(parseFloat(value))) {
+    else if (typeof value === "number") {
         return DataTypes.NUMBER;
     } else if (value.constructor === Array) {
         return DataTypes.LIST;
