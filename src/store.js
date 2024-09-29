@@ -8,6 +8,8 @@ export const useStore = create((set, get) => ({
     fixedNodes: new Set(),
     assemblyInfo: {type: "type-a electronic device"},
     simulationRunning: false,
+    viewport: {x: 0, y: 0, zoom: 1},
+    selection: {nodes: [], edges: []},
 
     onNodesChange(changes) {
         set({
@@ -51,8 +53,12 @@ export const useStore = create((set, get) => ({
     addNode(type) {
         const id = nanoid();
         const data = {name: type}
-        const position = {x: 0, y : 0}
-        set({nodes: [...get().nodes, {
+        const getResult = get()
+        const zoom = getResult.viewport.zoom
+        const position = {
+            x: (window.innerWidth/2-getResult.viewport.x)/zoom,
+            y: (window.innerHeight/2-getResult.viewport.y)/zoom}
+        set({nodes: [...getResult.nodes, {
             id, type, data, position
         }]})
     },
@@ -68,5 +74,11 @@ export const useStore = create((set, get) => ({
     },
     setSimulationRunning(running) {
         set({simulationRunning: running});
+    },
+    updateViewport(viewport) {
+        set({viewport: viewport})
+    },
+    updateSelection(params) {
+        set({selection: {...params}})
     }
 }));

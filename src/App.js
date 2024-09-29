@@ -16,11 +16,14 @@ import {ComponentSelector} from "./ComponentSelector";
 const appSelector = (store) => ({
     nodes: store.nodes,
     edges: store.edges,
+    viewport: store.viewport,
     onNodesChange: store.onNodesChange,
     onEdgesChange: store.onEdgesChange,
     addEdge: store.addEdge,
     loadAssembly: store.loadAssembly,
-    setSimulationRunning: store.setSimulationRunning
+    setSimulationRunning: store.setSimulationRunning,
+    updateViewport: store.updateViewport,
+    updateSelection: store.updateSelection
 });
 
 const nodeTypes = Object.keys(NodeDetails).reduce((result, key) => {
@@ -87,9 +90,12 @@ export default function App() {
             <ReactFlow
                 nodes={store.nodes}
                 edges={store.edges}
+                viewport={store.viewport}
                 onNodesChange={store.onNodesChange}
                 onEdgesChange={store.onEdgesChange}
                 onConnect={store.addEdge}
+                onViewportChange={store.updateViewport}
+                onSelectionChange={store.updateSelection}
                 isValidConnection={isValidConnection}
                 nodeTypes={nodeTypes}
                 deleteKeyCode={["Delete", "Backspace"]}
