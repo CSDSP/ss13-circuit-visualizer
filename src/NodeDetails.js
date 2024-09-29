@@ -2207,7 +2207,7 @@ export const NodeDetails = {
         "complexity": 4,
         "size": 1,
         "inputs": {
-            "function": {
+            "function to store": {
                 "dataType": DataTypes.STRING,
                 "index": 0
             },
@@ -2221,7 +2221,7 @@ export const NodeDetails = {
             }
         },
         "outputs": {
-            "function": {
+            "stored function": {
                 "dataType": DataTypes.STRING,
                 "index": 0
             },
@@ -3205,11 +3205,11 @@ export const NodeDetails = {
         "complexity": 2,
         "size": 1,
         "inputs": {
-            "X": {
+            "rel X": {
                 "dataType": DataTypes.NUMBER,
                 "index": 0
             },
-            "Y": {
+            "rel Y": {
                 "dataType": DataTypes.NUMBER,
                 "index": 1
             },
@@ -3219,11 +3219,11 @@ export const NodeDetails = {
             }
         },
         "outputs": {
-            "X": {
+            "abs X": {
                 "dataType": DataTypes.NUMBER,
                 "index": 0
             },
-            "Y": {
+            "abs Y": {
                 "dataType": DataTypes.NUMBER,
                 "index": 1
             },
@@ -5688,47 +5688,47 @@ export const NodeDetails = {
                 "dataType": DataTypes.NUMBER,
                 "index": 1
             },
-            "Metal": {
+            "Stored Metal": {
                 "dataType": DataTypes.NUMBER,
                 "index": 2
             },
-            "Glass": {
+            "Stored Glass": {
                 "dataType": DataTypes.NUMBER,
                 "index": 3
             },
-            "Silver": {
+            "Stored Silver": {
                 "dataType": DataTypes.NUMBER,
                 "index": 4
             },
-            "Gold": {
+            "Stored Gold": {
                 "dataType": DataTypes.NUMBER,
                 "index": 5
             },
-            "Diamond": {
+            "Stored Diamond": {
                 "dataType": DataTypes.NUMBER,
                 "index": 6
             },
-            "Uranium": {
+            "Stored Uranium": {
                 "dataType": DataTypes.NUMBER,
                 "index": 7
             },
-            "Solid Plasma": {
+            "Stored Solid Plasma": {
                 "dataType": DataTypes.NUMBER,
                 "index": 8
             },
-            "Bluespace Mesh": {
+            "Stored Bluespace Mesh": {
                 "dataType": DataTypes.NUMBER,
                 "index": 9
             },
-            "Bananium": {
+            "Stored Bananium": {
                 "dataType": DataTypes.NUMBER,
                 "index": 10
             },
-            "Titanium": {
+            "Stored Titanium": {
                 "dataType": DataTypes.NUMBER,
                 "index": 11
             },
-            "Plastic": {
+            "Stored Plastic": {
                 "dataType": DataTypes.NUMBER,
                 "index": 12
             },
