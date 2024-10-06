@@ -51,11 +51,11 @@ function InputWrapper({value, type, setValue, containedAnyType, setContainedAnyT
                 <InputWrapper type={containedAnyTypeView} value={valueView} setValue={setValue}/>
             </span>
         case DataTypes.STRING:
-            return <input className="nodrag" type="string" value={valueView} onChange={setDataEvent} />
+            return <input className="nodrag" type="string" defaultValue={valueView} onChange={setDataEvent} />
         case DataTypes.COLOR:
             return <input className="nodrag" type="color" value={valueView} onChange={setDataEvent} />
         case DataTypes.NUMBER:
-            return <input className="nodrag" type="number" value={valueView} onChange={setDataEvent} />
+            return <input className="nodrag" type="number" defaultValue={valueView} onChange={setDataEvent} />
         case DataTypes.DIR:
             return <select value={valueView} className="nodrag" onChange={setDataEvent}>
                 <option value="1">north (1)</option>
@@ -191,7 +191,7 @@ function NodeName({id, data}) {
         }
     })
     if (editingName) {
-        return <input className="nodrag node-name" type="string" value={data.name} onChange={setNameEvent}
+        return <input className="nodrag node-name" type="string" defaultValue={data.name} onChange={setNameEvent}
                       onBlur={stopEditing} ref={inputReference}/>
     } else {
         return <p className="node-name" onDoubleClick={startEditing}>{data.name}</p>
