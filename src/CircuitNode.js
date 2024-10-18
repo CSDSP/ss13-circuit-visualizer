@@ -135,9 +135,9 @@ function NodeListEditor({value, setValue}) {
         if (!result.destination) return
         const a = result.destination.index;
         const b = result.source.index;
-        [containedValues[a], containedValues[b]] = [containedValues[b], containedValues[a]];
-        [containedTypes[a], containedTypes[b]] = [containedTypes[b], containedTypes[a]];
-        [lineIDs[a], lineIDs[b]] = [lineIDs[b], lineIDs[a]];
+        containedValues.splice(a, 0, containedValues.splice(b, 1)[0])
+        containedTypes.splice(a, 0, containedTypes.splice(b, 1)[0])
+        lineIDs.splice(a, 0, lineIDs.splice(b, 1)[0])
         setValue({list: containedValues, types: containedTypes});
         setLineIds(lineIDs);
     }, [containedTypes, containedValues, lineIDs, setValue])
