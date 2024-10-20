@@ -1,7 +1,7 @@
 import {DataTypes, NodeDetails} from "./NodeDetails";
 import {nanoid} from "nanoid";
 import {useStore} from "./store";
-import React, {useCallback} from "react";
+import React, {useCallback, useState} from "react";
 import Popup from "reactjs-popup";
 
 const assemblySelector = (store) => ({
@@ -156,14 +156,14 @@ export function loadAssembly(program) {
     return result;
 }
 
-function saveAssembly(assembly) {
+function saveAssembly(assembly, includeMetadata) {
     const blocks = {}
     blocks.assembly = assembly.assembly
     const indexes = {}
     blocks.components = []
     for (let component of assembly.components) {
-        const newComponent = {type: component.type, name: component.data.name, position: component.position,
-            isFixed: component.data.isFixed}
+        const newComponent = {type: component.type, name: component.data.name};
+        const metadata = {position: component.position, isFixed: component.data.isFixed}
         const details = NodeDetails[component.type];
         const inputs = []
         for (let key in details.inputs) {
@@ -173,7 +173,7 @@ function saveAssembly(assembly) {
             let type = details.inputs[key].dataType
             if (type === DataTypes.ANY) {
                 type = component.data[`${key}-type`]
-                newComponent[`${key}-type`] = type
+                metadata[`${key}-type`] = type
             }
             if (type === DataTypes.LIST) {
                 for (let i = 0; i < component.data[key].list.length; i++) {
@@ -183,7 +183,7 @@ function saveAssembly(assembly) {
                     }
                 }
                 inputs.push([details.inputs[key].index + 1, null, component.data[key].list]);
-                newComponent[`${key}-list-types`] = component.data[key].types
+                metadata[`${key}-list-types`] = component.data[key].types
             }
             else if (type === DataTypes.NUMBER || type === DataTypes.DIR) {
                 inputs.push([details.inputs[key].index + 1, null, Number(component.data[key])]);
@@ -207,8 +207,9 @@ function saveAssembly(assembly) {
                 newComponent["output pin-type"] = type
             }
         }
+        const result = includeMetadata ? {...newComponent, ...metadata} : newComponent;
         indexes[component.id] = blocks.components.length
-        blocks.components.push(newComponent)
+        blocks.components.push(result)
     }
     blocks.wires = []
     for (let edge of assembly.edges) {
@@ -222,6 +223,7 @@ function saveAssembly(assembly) {
 
 export function ExportAssembly() {
     const {nodes, edges, assemblyInfo, setAssemblyType, setAssemblyName, setAssemblyColor, setAssemblyDescription} = useStore(assemblySelector)
+    const [includeMetadata, setIncludeMetadata] = useState(true);
     const space = nodes.map(node => NodeDetails[node.type].size == null ? 1 : NodeDetails[node.type].size).reduce((a, b) => a + b, 0)
     const complexity = nodes.map(node => NodeDetails[node.type].complexity).reduce((a, b) => a + b, 0)
     const assemblies = {
@@ -408,10 +410,13 @@ export function ExportAssembly() {
         }
     }
     const assembly = {assembly: assemblyInfo, components: nodes, edges: edges};
-    const exported = saveAssembly(assembly);
+    const exported = saveAssembly(assembly, includeMetadata);
     const copy = useCallback(() => {
         navigator.clipboard.writeText(exported);
     }, [exported]);
+    const handleCheckedEvent = useCallback((e) => {
+        setIncludeMetadata(e.target.checked);
+    }, [setIncludeMetadata]);
 
     return <div className="export-assembly">
         <h3>Export Program</h3>
@@ -436,6 +441,10 @@ export function ExportAssembly() {
                 <label>
                     <p>Assembly color: </p>
                     <input type="color" value={assemblyInfo.detail_color} onChange={setAssemblyColor}/>
+                </label><br/>
+                <label>
+                    <p>Include visualizer metadata: </p>
+                    <input type="checkbox" checked={includeMetadata} onChange={handleCheckedEvent}/>
                 </label>
             </div>
             <div className="export-right">

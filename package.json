@@ -1,6 +1,6 @@
 {
   "name": "ss13-circuit-visualizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "homepage": "https://csdsp.github.io/ss13-circuit-visualizer/",
   "dependencies": {
